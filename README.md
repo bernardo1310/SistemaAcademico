@@ -1,1 +1,1 @@
-![ModeloPlantUML_SistemaAcademico](https://github.com/user-attachments/assets/858dd869-d37d-43b5-b29a-7a0584fb9b64)
+![Uploading dLFBJiCm4BnRyZzOFXQb4X8dnA48r1E72lY1hRDKbXoxzTeSUFmxVgHfWbgWE0TBipkpuucze00-nCvmnfaoG2JkeYSdtZaJQLqy1Q_jHbZNOKKQRODGhjKRnzddWNPhelsDra62LJJGOsld388LoKI8D95RUVU2HCwVxsG9X7lMgPvxJKflZRRmH_q2z2qjaahdWAdaS_GT79qx0Bi8D.png…]()
