@@ -1,0 +1,8 @@
+package com.classes.DTO;
+
+public class RegistroFrequencia {
+	private int codigo;
+	private String data;
+	
+	
+}

@@ -1,0 +1,6 @@
+package com.classes.DTO;
+
+public class Avaliacao {
+	private int codigo;
+	private Date date;
+}

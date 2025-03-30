@@ -1,0 +1,66 @@
+package com.classes.DTO;
+
+public class RegistroAvaliacao {
+    private int codigo;
+    private String date;
+    private Professor professor;  // Quem registrou a avaliação
+    private Aluno aluno;          // Para saber a quem a avaliação pertence
+    private Avaliacao avaliacao;  // A avaliação associada
+
+    public RegistroAvaliacao() {
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Avaliacao [codigo=");
+		builder.append(codigo);
+		builder.append(", date=");
+		builder.append(date);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+}

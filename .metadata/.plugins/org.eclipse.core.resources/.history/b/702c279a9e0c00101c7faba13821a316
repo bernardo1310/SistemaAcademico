@@ -1,0 +1,8 @@
+package com.classes.DTO;
+
+public class Disciplina {
+	private String name;
+	private int codigo;
+	private String descricao;
+
+}

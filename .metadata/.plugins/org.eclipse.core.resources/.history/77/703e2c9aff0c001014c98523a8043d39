@@ -1,0 +1,57 @@
+public class Aluno {
+    private String nome;
+    private boolean status;
+    private SituacaoAluno situacao;
+    private Curso curso;
+    private int turmaCodigo;
+
+    // Construtor
+    public Aluno(String nome, boolean status, SituacaoAluno situacao, Curso curso, int turmaCodigo) {
+        this.nome = nome;
+        this.status = status;
+        this.situacao = situacao;
+        this.curso = curso;
+        this.turmaCodigo = turmaCodigo;
+    }
+
+    // Getters e setters
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public SituacaoAluno getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoAluno situacao) {
+        this.situacao = situacao;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public int getTurmaCodigo() {
+        return turmaCodigo;
+    }
+
+    public void setTurmaCodigo(int turmaCodigo) {
+        this.turmaCodigo = turmaCodigo;
+    }
+}

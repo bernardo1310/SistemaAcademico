@@ -1,0 +1,46 @@
+package com.classes.DTO;
+
+public class Disciplina {
+	private String name;
+	private int codigo;
+	private String descricao;
+	
+	public Disciplina() {
+		
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Disciplina [name=");
+		builder.append(name);
+		builder.append(", codigo=");
+		builder.append(codigo);
+		builder.append(", descricao=");
+		builder.append(descricao);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+
+}

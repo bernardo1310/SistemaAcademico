@@ -1,0 +1,6 @@
+package com.classes.DTO;
+
+public class Professor {
+	private String nome;
+	private int codigo;
+}

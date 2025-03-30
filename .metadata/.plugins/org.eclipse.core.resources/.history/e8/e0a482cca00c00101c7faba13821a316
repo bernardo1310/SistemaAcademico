@@ -1,0 +1,6 @@
+package com.classes.DTO;
+
+public class Frequencia {
+	private int codigo;
+	private String data;
+}

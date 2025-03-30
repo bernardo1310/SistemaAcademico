@@ -1,0 +1,6 @@
+package com.classes.DTO;
+
+public class Turma {
+	private int codigo;
+	private int quantidade;
+}

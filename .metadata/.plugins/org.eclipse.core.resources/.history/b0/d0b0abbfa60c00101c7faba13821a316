@@ -1,0 +1,32 @@
+package com.classes.DTO;
+
+public class Fase {
+	private int codigo;
+	
+	public Fase() {	
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Fase [codigo=");
+		builder.append(codigo);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
+}

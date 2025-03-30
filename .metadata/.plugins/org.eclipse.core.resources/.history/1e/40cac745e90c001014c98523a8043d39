@@ -1,0 +1,28 @@
+package com.classes.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import com.classes.DTO.Curso;
+
+public class CursoDAO {
+
+    final String NOMEDATABELA = "Curso";
+
+    public boolean inserir(Curso curso) {
+        try {
+            Connection conn = ConexaoBD.getConexao();
+            String sql = "INSERT INTO " + NOMEDATABELA + " (nome, descricao) VALUES (?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, curso.getNome());         // Definindo o nome
+            ps.setString(2, curso.getDescricao());    // Definindo a descricao
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}

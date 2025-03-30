@@ -1,0 +1,43 @@
+package com.classes.DTO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Fase {
+	private int codigo;
+    protected List<Disciplina> disciplinas;
+
+    public Fase() {
+        this.disciplinas = new ArrayList<>();
+    }
+
+    public void adicionarDisciplina(Disciplina disciplina) {
+        this.disciplinas.add(disciplina);
+    }
+	
+
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Fase [codigo=");
+		builder.append(codigo);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
+}

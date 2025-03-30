@@ -1,0 +1,144 @@
+package com.classes.DAO;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import com.classes.DTO.Aluno;
+import com.classes.DTO.Curso;
+import com.classes.DTO.SituacaoAluno;
+
+public class AlunoDAO {
+
+    final String NOMEDATABELA = "Aluno";
+
+    // Inserir aluno
+    public boolean inserir(Aluno aluno) {
+        try {
+            Connection conn = ConexaoBD.getConexao();
+            String sql = "INSERT INTO " + NOMEDATABELA + " (nome, matricula, status, situacao, cursoCodigo, turmaCodigo) VALUES (?, ?, ?, ?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, aluno.getNome());
+            ps.setInt(2, aluno.getMatricula());
+            ps.setBoolean(3, aluno.isStatus());
+            ps.setString(4, aluno.getSituacao().toString());  // Convertendo enum para string
+            ps.setInt(5, aluno.getCurso().getCodigo());  // Código do curso
+            ps.setInt(6, aluno.getTurmaCodigo());
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Alterar aluno
+    public boolean alterar(Aluno aluno) {
+        try {
+            Connection conn = ConexaoBD.getConexao();
+            String sql = "UPDATE " + NOMEDATABELA + " SET nome = ?, matricula = ?, status = ?, situacao = ?, cursoCodigo = ?, turmaCodigo = ? WHERE codigo = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, aluno.getNome());
+            ps.setInt(2, aluno.getMatricula());
+            ps.setBoolean(3, aluno.isStatus());
+            ps.setString(4, aluno.getSituacao().toString());
+            ps.setInt(5, aluno.getCurso().getCodigo());
+            ps.setInt(6, aluno.getTurmaCodigo());
+            ps.setInt(7, aluno.getCodigo());
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Excluir aluno
+    public boolean excluir(Aluno aluno) {
+        try {
+            Connection conn = ConexaoBD.getConexao();
+            String sql = "DELETE FROM " + NOMEDATABELA + " WHERE codigo = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, aluno.getCodigo());
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Procurar aluno por código
+    public Aluno procurarPorCodigo(int codigo) {
+        try {
+            Connection conn = ConexaoBD.getConexao();
+            String sql = "SELECT * FROM " + NOMEDATABELA + " WHERE codigo = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Aluno aluno = new Aluno();
+                aluno.setCodigo(rs.getInt("codigo"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setMatricula(rs.getInt("matricula"));
+                aluno.setStatus(rs.getBoolean("status"));
+                aluno.setSituacao(SituacaoAluno.valueOf(rs.getString("situacao")));  // Convertendo string para enum
+                // Aqui você pode preencher o Curso, se necessário
+                // Exemplo de preenchimento fictício, substitua com a lógica real:
+                Curso curso = new Curso();
+                curso.setCodigo(rs.getInt("cursoCodigo"));
+                aluno.setCurso(curso);
+                aluno.setTurmaCodigo(rs.getInt("turmaCodigo"));
+                rs.close();
+                ps.close();
+                conn.close();
+                return aluno;
+            } else {
+                rs.close();
+                ps.close();
+                conn.close();
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Listar todos os alunos
+    public List<Aluno> listarTodos() {
+        try {
+            Connection conn = ConexaoBD.getConexao();
+            String sql = "SELECT * FROM " + NOMEDATABELA + ";";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            List<Aluno> alunos = new ArrayList<>();
+            while (rs.next()) {
+                Aluno aluno = new Aluno();
+                aluno.setCodigo(rs.getInt("codigo"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setMatricula(rs.getInt("matricula"));
+                aluno.setStatus(rs.getBoolean("status"));
+                aluno.setSituacao(SituacaoAluno.valueOf(rs.getString("situacao")));
+                // Preencher o curso aqui
+                Curso curso = new Curso();
+                curso.setCodigo(rs.getInt("cursoCodigo"));
+                aluno.setCurso(curso);
+                aluno.setTurmaCodigo(rs.getInt("turmaCodigo"));
+                alunos.add(aluno);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return alunos;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+package com.classes.DTO;
+
+public class Frequencia {
+	private int codigo;
+	private boolean presente;
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public boolean isPresente() {
+		return presente;
+	}
+	public void setPresente(boolean presente) {
+		this.presente = presente;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Frequencia [codigo=");
+		builder.append(codigo);
+		builder.append(", presente=");
+		builder.append(presente);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+}

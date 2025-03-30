@@ -1,0 +1,50 @@
+package com.classes.DAO;
+
+import com.classes.DTO.Aluno;
+import com.classes.DTO.Curso;
+import com.classes.DTO.SituacaoAluno;
+import com.utils.ConexaoBD;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class AlunoDAO {
+    
+    private static final String NOMEDATABELA = "alunos";  // Nome da tabela no banco de dados
+
+    public boolean inserir(Aluno aluno) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = ConexaoBD.getConexao();
+            
+            // SQL para inserir um novo aluno
+            String sql = "INSERT INTO " + NOMEDATABELA + " (nome, matricula, status, situacao, cursoCodigo, turmaCodigo) " +
+                         "VALUES (?, ?, ?, ?, ?, ?);";
+            ps = conn.prepareStatement(sql);
+            
+            // Definir os parâmetros da query
+            ps.setString(1, aluno.getNome());
+            ps.setInt(2, aluno.getMatricula());
+            ps.setBoolean(3, aluno.isStatus());
+            ps.setString(4, aluno.getSituacao().toString());  // Assume que a situação do aluno é um enum
+            ps.setInt(5, aluno.getCurso().getCodigo());       // Assumindo que o curso é uma entidade
+            ps.setInt(6, aluno.getTurmaCodigo());              // Código da turma
+
+            ps.executeUpdate(); // Executar o comando de inserção no banco de dados
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (ps != null) ps.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+package com.classes.DAO;
+
+import java.util.List;
+
+import com.classes.DTO.Aluno;
+
+public interface AlunoDAO {
+    void inserir(Aluno aluno);
+    void atualizar(Aluno aluno);
+    void deletar(int matricula);
+    Aluno buscarPorMatricula(int matricula);
+    List<Aluno> listarTodos();
+}
+
