@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Aluno {
     private int codigo;  
     private String nome; 
-    private int matricula;  
     private boolean status; 
     private SituacaoAluno situacao;  // Agora com a variável situacao
     private Curso curso; 
@@ -13,7 +12,7 @@ public class Aluno {
 
     public Aluno() {
     }
-    
+
     public int getCodigo() {
         return codigo;
     }
@@ -28,14 +27,6 @@ public class Aluno {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
     }
 
     public boolean isStatus() {
@@ -70,49 +61,22 @@ public class Aluno {
         this.turmaCodigo = turmaCodigo;
     }
 
-    
-
     @Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Aluno [codigo=");
-		builder.append(codigo);
-		builder.append(", nome=");
-		builder.append(nome);
-		builder.append(", matricula=");
-		builder.append(matricula);
-		builder.append(", status=");
-		builder.append(status);
-		builder.append(", situacao=");
-		builder.append(situacao);
-		builder.append(", curso=");
-		builder.append(curso);
-		builder.append(", turmaCodigo=");
-		builder.append(turmaCodigo);
-		builder.append("]");
-		return builder.toString();
-	}
-
-	// Verificação de Matrícula válida
-    public boolean isMatriculaValida() {
-        return matricula > 0;
+    public String toString() {
+        return "Aluno [codigo=" + codigo + ", nome=" + nome + ", status=" + status + ", situacao=" + situacao
+                + ", curso=" + curso + ", turmaCodigo=" + turmaCodigo + "]";
     }
 
-    // Comparação dos objetos Aluno com base na matrícula
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
         Aluno aluno = (Aluno) obj;
-        return matricula == aluno.matricula;
+        return codigo == aluno.codigo;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(matricula);
+        return Objects.hash(codigo);
     }
 }

@@ -1,3 +1,5 @@
-GitRepositoriesView.GitDirectories=
-GitRepositoriesView.GitDirectories.relative=
+GitRepositoriesView.GitDirectories=C\:\\Users\\Win\\eclipse-workspace\\SistemaAcademico\\.git;C\:\\Users\\Win\\eclipse-workspace\\SistemaAcademico\\repository\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;repository\\.git;
+core_defaultRepositoryDir=C\:\\Users\\Win\\eclipse-workspace\\SistemaAcademico
+core_ssh_default_agent=\\\\.\\pageant
 eclipse.preferences.version=1

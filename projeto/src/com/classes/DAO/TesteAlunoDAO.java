@@ -12,7 +12,6 @@ public class TesteAlunoDAO {
         // Criando um novo aluno
         Aluno aluno = new Aluno();
         aluno.setNome("Carlos Silva");
-        aluno.setCodigo(12345);  // Alterado de matricula para codigo
         aluno.setStatus(true);
         aluno.setSituacao(SituacaoAluno.ATIVO);  // Exemplo de enum
         aluno.setCurso(new Curso());  // Adicionando o curso
@@ -31,7 +30,7 @@ public class TesteAlunoDAO {
         }
 
         // Teste de consulta por código
-        Aluno alunoEncontrado = alunoDAO.procurarPorCodigo(aluno.getCodigo());  // Alterado de matricula para codigo
+        Aluno alunoEncontrado = alunoDAO.procurarPorCodigo(aluno.getCodigo());  // Consultando pelo código
         if (alunoEncontrado != null) {
             System.out.println("Aluno encontrado: " + alunoEncontrado);
         }

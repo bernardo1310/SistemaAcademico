@@ -32,16 +32,17 @@ CREATE TABLE IF NOT EXISTS `Turma` (
 ) ENGINE = InnoDB;
 
 -- Tabela Aluno
-CREATE TABLE IF NOT EXISTS `Aluno` (
-  `codigo` INT NOT NULL AUTO_INCREMENT,  -- Alterado de matricula para codigo
-  `nome` VARCHAR(255) NOT NULL,
-  `status` BOOLEAN NOT NULL,
-  `situacao_codigo` INT NOT NULL,  -- Chave estrangeira para a situação do aluno
-  `turma_codigo` INT NOT NULL,  -- Chave estrangeira para a turma
-  PRIMARY KEY (`codigo`),  -- Alterado de matricula para codigo
-  FOREIGN KEY (`situacao_codigo`) REFERENCES `SituacaoAluno`(`codigo`),
-  FOREIGN KEY (`turma_codigo`) REFERENCES `Turma`(`codigo`)
-) ENGINE = InnoDB;
+CREATE TABLE aluno (
+    codigo INT(11) NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    status TINYINT(1) NOT NULL,
+    situacao_codigo INT(11) NOT NULL,
+    turma_codigo INT(11) NOT NULL,
+    PRIMARY KEY (codigo),
+    FOREIGN KEY (situacao_codigo) REFERENCES situacaoaluno(codigo), -- Relacionamento com a tabela 'situacaoaluno'
+    FOREIGN KEY (turma_codigo) REFERENCES turma(codigo) -- Relacionamento com a tabela 'turma'
+);
+
 
 -- Tabela Professor
 CREATE TABLE IF NOT EXISTS `Professor` (
@@ -88,7 +89,3 @@ CREATE TABLE IF NOT EXISTS `RegistroAvaliacao` (
   FOREIGN KEY (`avaliacao_codigo`) REFERENCES `Avaliacao`(`codigo`),
   FOREIGN KEY (`aluno_codigo`) REFERENCES `Aluno`(`codigo`)  -- Alterado para 'codigo'
 ) ENGINE = InnoDB;
-
-ALTER TABLE Aluno CHANGE matricula codigo INT AUTO_INCREMENT;
-SHOW TABLES;
-DESCRIBE Aluno;

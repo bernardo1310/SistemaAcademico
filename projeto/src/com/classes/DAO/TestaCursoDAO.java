@@ -10,7 +10,7 @@ public class TestaCursoDAO {
 
         // Criando um novo curso
         Curso curso = new Curso();
-        curso.setNome("Matemática");
+        curso.setNome("BCC");
         curso.setDescricao("Curso de Matemática Básica");
 
         // Teste de inserção
@@ -19,7 +19,7 @@ public class TestaCursoDAO {
         }
 
         // Teste de alteração
-        curso.setDescricao("Curso de Matemática Avançada");
+        curso.setDescricao("Programacao Orientada a Objetos");
         if (cursoDAO.alterar(curso)) {
             System.out.println("Curso alterado com sucesso!");
         }

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.classes.Conexao.ConexaoBD;
 import com.classes.DTO.Curso;
-import com.utils.ConexaoBD;
 
 public class CursoDAO {
 
